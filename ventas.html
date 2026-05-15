@@ -1,17 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Administrar ventas</title>
+    <title>Registrar Ventas</title>
 
     <link rel="stylesheet" href="content/ventas.css">
 </head>
 
 <body>
 
+    <div class="container">
 
+        <div class="header">
+            <h1>Registrar Ventas</h1>
+            <a href="index.html" class="btn-regresar">
+                ← Regresar al inicio
+            </a>
+
+            <p>
+                Terminal punto de venta en donde se pueden vender varios
+                artículos de diferentes tipos, obedeciendo a los descuentos.
+            </p>
+
+        </div>
+
+        <div class="formulario">
+
+            <div class="input-group">
+                <label>Nombre del producto</label>
+                <input type="text" placeholder="Ej. Televisión Samsung">
+            </div>
+
+            <div class="input-group">
+                <label>Precio</label>
+                <input type="number" placeholder="$0.00">
+            </div>
+
+            <div class="input-group">
+                <label>Cantidad</label>
+                <input type="number" placeholder="0">
+            </div>
+
+            <div class="input-group">
+                <label>Tipo de producto</label>
+
+                <select>
+                    <option>Electrónica</option>
+                    <option>Alimentos</option>
+                    <option>Ropa</option>
+                    <option>Hogar</option>
+                </select>
+            </div>
+
+            <button class="btn-agregar">
+                Agregar venta
+            </button>
+
+        </div>
+
+        <div class="tabla-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Descuento</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Televisión Samsung</td>
+                        <td>$12,000</td>
+                        <td>1</td>
+                        <td>10%</td>
+                        <td>$10,800</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
 
 </body>
+
 </html>
