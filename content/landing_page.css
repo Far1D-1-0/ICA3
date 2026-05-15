@@ -1,98 +1,78 @@
-/* Fondo futurista */
+/* ===== ESTILO COSTCO ===== */
+
 body {
     margin: 0;
     padding: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url("https://images.unsplash.com/photo-1604719312566-8912e9227c6a?q=80&w=1600&auto=format&fit=crop");
+
+    background-size: cover;
+    background-position: center;
+
     height: 100vh;
 
     display: flex;
     justify-content: center;
     align-items: center;
-
-    background: radial-gradient(circle at top, #0f172a, #020617);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-    overflow: hidden;
 }
 
-/* Efecto de luces */
-body::before {
-    content: "";
-    position: absolute;
-    width: 600px;
-    height: 600px;
-
-    background: rgba(0, 255, 255, 0.12);
-
-    border-radius: 50%;
-
-    filter: blur(120px);
-
-    top: -200px;
-    left: -150px;
-}
-
-body::after {
-    content: "";
-    position: absolute;
-    width: 500px;
-    height: 500px;
-
-    background: rgba(0, 140, 255, 0.15);
-
-    border-radius: 50%;
-
-    filter: blur(120px);
-
-    bottom: -200px;
-    right: -100px;
-}
-
-/* Tarjeta principal */
+/* Contenedor principal */
 .container {
-    position: relative;
-    z-index: 1;
-
     width: 500px;
+
+    background-color: rgba(255,255,255,0.96);
 
     padding: 40px;
 
-    border-radius: 25px;
-
-    background: rgba(15, 23, 42, 0.75);
-
-    border: 1px solid rgba(0, 255, 255, 0.25);
-
-    backdrop-filter: blur(20px);
+    border-radius: 18px;
 
     box-shadow:
-        0 0 25px rgba(0,255,255,0.25),
-        0 0 60px rgba(0,140,255,0.15);
+        0 10px 30px rgba(0,0,0,0.3);
 
     text-align: center;
+
+    border-top: 8px solid #e31837;
 }
 
 /* Título */
 h1 {
-    color: #00ffff;
+    color: #005daa;
 
-    font-size: 40px;
+    font-size: 42px;
 
     margin-bottom: 10px;
 
-    text-shadow:
-        0 0 10px #00ffff,
-        0 0 20px #00ffff;
+    font-weight: bold;
+}
+
+/* Línea decorativa */
+h1::after {
+    content: "";
+
+    display: block;
+
+    width: 120px;
+    height: 4px;
+
+    background-color: #e31837;
+
+    margin: 12px auto 0 auto;
+
+    border-radius: 10px;
 }
 
 /* Texto */
 p {
-    color: #cbd5e1;
+    color: #444;
 
+    margin-top: 25px;
     margin-bottom: 30px;
 
     font-size: 18px;
-
-    letter-spacing: 1px;
 }
 
 /* Contenedor botones */
@@ -108,43 +88,40 @@ a {
     text-decoration: none;
 }
 
-/* Botones futuristas */
+/* Botones */
 button {
     width: 100%;
 
     padding: 16px;
 
-    border-radius: 14px;
+    border: none;
 
-    border: 1px solid rgba(0,255,255,0.4);
+    border-radius: 12px;
 
-    background: rgba(0,255,255,0.08);
+    background: linear-gradient(90deg, #005daa, #0077d4);
 
-    color: #ffffff;
+    color: white;
 
     font-size: 17px;
 
-    letter-spacing: 1px;
+    font-weight: bold;
 
     cursor: pointer;
 
-    transition: all 0.35s ease;
-
-    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
 
     box-shadow:
-        0 0 10px rgba(0,255,255,0.2);
+        0 4px 10px rgba(0,93,170,0.3);
 }
 
 /* Hover */
 button:hover {
-    transform: translateY(-3px) scale(1.02);
+    background: linear-gradient(90deg, #004b89, #005daa);
 
-    background: rgba(0,255,255,0.18);
+    transform: translateY(-3px);
 
     box-shadow:
-        0 0 15px #00ffff,
-        0 0 30px rgba(0,255,255,0.7);
+        0 8px 18px rgba(0,93,170,0.4);
 }
 
 /* Click */
