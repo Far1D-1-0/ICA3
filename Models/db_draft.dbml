@@ -1,0 +1,189 @@
+// DBML generated from Models/db_draft.sql
+// Relational model for the Costco draft database.
+
+Table Cliente {
+  id_cliente int [pk, increment]
+  nombre varchar(100) [not null]
+  telefono varchar(20)
+}
+
+Table Membresia {
+  id_membresia int [pk, increment]
+  id_cliente int [not null]
+  tipo varchar(50)
+  fecha_inicio date
+  fecha_fin date
+}
+
+Table Categoria {
+  id_categoria int [pk, increment]
+  nombre varchar(100) [not null]
+}
+
+Table Producto {
+  id_producto int [pk, increment]
+  nombre varchar(100) [not null]
+  precio_efectivo decimal(10,2)
+  precio_credito decimal(10,2)
+  precio_debito decimal(10,2)
+  stock int
+  id_categoria int
+}
+
+Table Historial_Precios {
+  id_historial int [pk, increment]
+  id_producto int [not null]
+  precio_efectivo decimal(10,2)
+  precio_credito decimal(10,2)
+  fecha_inicio date
+  fecha_fin date
+}
+
+Table Promocion {
+  id_promocion int [pk, increment]
+  nombre varchar(100)
+  tipo varchar(50)
+  fecha_inicio date
+  fecha_fin date
+}
+
+Table Descuento {
+  id_descuento int [pk, increment]
+  tipo varchar(50)
+  valor decimal(5,2)
+}
+
+Table Producto_Promocion {
+  id_producto int
+  id_promocion int
+
+  indexes {
+    (id_producto, id_promocion) [pk]
+  }
+}
+
+Table Producto_Descuento {
+  id_producto int
+  id_descuento int
+
+  indexes {
+    (id_producto, id_descuento) [pk]
+  }
+}
+
+Table Rol {
+  id_rol int [pk, increment]
+  nombre varchar(50)
+}
+
+Table Area {
+  id_area int [pk, increment]
+  nombre varchar(100)
+}
+
+Table Empleado {
+  id_empleado int [pk, increment]
+  nombre varchar(100)
+  id_rol int
+  id_area int
+}
+
+Table Proveedor {
+  id_proveedor int [pk, increment]
+  nombre varchar(100)
+}
+
+Table Compra {
+  id_compra int [pk, increment]
+  fecha date
+  id_proveedor int
+}
+
+Table DetalleCompra {
+  id_detalleC int [pk, increment]
+  id_compra int
+  id_producto int
+  cantidad int
+  precio decimal(10,2)
+}
+
+Table Venta {
+  id_venta int [pk, increment]
+  id_cliente int
+  id_empleado int
+  fecha date
+  total decimal(10,2)
+}
+
+Table DetalleVenta {
+  id_detalleV int [pk, increment]
+  id_venta int
+  id_producto int
+  cantidad int
+  precio decimal(10,2)
+}
+
+Table Caja {
+  id_caja int [pk, increment]
+  nombre varchar(50)
+}
+
+Table CorteCaja {
+  id_corte int [pk, increment]
+  id_caja int
+  id_empleado int
+  fecha_apertura datetime
+  fecha_cierre datetime
+  monto_inicial decimal(10,2)
+  monto_final decimal(10,2)
+}
+
+Table Facturacion {
+  id_factura int [pk, increment]
+  monto decimal(10,2)
+  fecha date
+  RFC varchar(20)
+  nombre varchar(100)
+  codigo_postal varchar(10)
+}
+
+Table Facturacion_Cliente {
+  id_factura int
+  id_cliente int
+
+  indexes {
+    (id_factura, id_cliente) [pk]
+  }
+}
+
+Table Facturacion_Proveedor {
+  id_factura int
+  id_proveedor int
+
+  indexes {
+    (id_factura, id_proveedor) [pk]
+  }
+}
+
+Ref: Membresia.id_cliente > Cliente.id_cliente
+Ref: Producto.id_categoria > Categoria.id_categoria
+Ref: Historial_Precios.id_producto > Producto.id_producto
+Ref: Producto_Promocion.id_producto > Producto.id_producto
+Ref: Producto_Promocion.id_promocion > Promocion.id_promocion
+Ref: Producto_Descuento.id_producto > Producto.id_producto
+Ref: Producto_Descuento.id_descuento > Descuento.id_descuento
+Ref: Empleado.id_rol > Rol.id_rol
+Ref: Empleado.id_area > Area.id_area
+Ref: Compra.id_proveedor > Proveedor.id_proveedor
+Ref: DetalleCompra.id_compra > Compra.id_compra
+Ref: DetalleCompra.id_producto > Producto.id_producto
+Ref: Venta.id_cliente > Cliente.id_cliente
+Ref: Venta.id_empleado > Empleado.id_empleado
+Ref: DetalleVenta.id_venta > Venta.id_venta
+Ref: DetalleVenta.id_producto > Producto.id_producto
+Ref: CorteCaja.id_caja > Caja.id_caja
+Ref: CorteCaja.id_empleado > Empleado.id_empleado
+Ref: Facturacion_Cliente.id_factura > Facturacion.id_factura
+Ref: Facturacion_Cliente.id_cliente > Cliente.id_cliente
+Ref: Facturacion_Proveedor.id_factura > Facturacion.id_factura
+Ref: Facturacion_Proveedor.id_proveedor > Proveedor.id_proveedor
